@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "306246110583",
+    "firebase_url": "https://dermapal-5af43.firebaseio.com",
+    "project_id": "dermapal-5af43",
+    "storage_bucket": "dermapal-5af43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306246110583:android:f472de8b53e62be2",
+        "android_client_info": {
+          "package_name": "com.sacredcodes.dermapal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306246110583-rfsvosl54kr7s8mt0j3k2kg196f0ef4c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sacredcodes.dermapal",
+            "certificate_hash": "f159c9f552099868ce4c6b4d5a78a26c131dfeda"
+          }
+        },
+        {
+          "client_id": "306246110583-km9u3qi29vd4sfmo91oofrvvga8nter2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIkzHSh0N2AQVRdJlxoeVV3VyM7cSW3Q4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306246110583-km9u3qi29vd4sfmo91oofrvvga8nter2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
