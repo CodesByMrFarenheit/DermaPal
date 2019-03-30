@@ -5,6 +5,9 @@ apply plugin: 'com.chaquo.python'
 
 android {
     compileSdkVersion 28
+
+    useLibrary  'org.apache.http.legacy'
+
     defaultConfig {
         applicationId "com.sacredcodes.dermapal"
         minSdkVersion 22
@@ -31,6 +34,10 @@ android {
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             }
         }
+
+
+
+
 
         //some exclusions are needed
         packagingOptions {
