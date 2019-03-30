@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -38,7 +39,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Welcome to Website Name!  These terms and conditions outline the rules and regulations for the use of Company Name's Website, located at Website.com.  By accessing this website we assume you accept these terms and conditions. Do not continue to use Website Name if you do not agree to take all of the terms and conditions stated on this page."
+            android:text="Welcome to DermaPal!  These terms and conditions outline the rules and regulations for the use of DermaPal.  By accessing this app we assume you accept these terms and conditions. Do not continue to use DermiPal if you do not agree to take all of the terms and conditions stated on this page."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -85,7 +86,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="256dp"
-            android:text="Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Company Name does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Company Name,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, Company Name shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website."
+            android:text="Parts of this app offer an opportunity for users to post and exchange opinions and information in certain areas of the DermiPal does not filter, edit, publish or review Comments prior to their presence on the app. Comments do not reflect the views and opinions of DermiPal,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, DermiPal shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this app."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -97,7 +98,7 @@
         android:id="@+id/layoutReg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -105,74 +106,110 @@
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.146"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="368dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/userPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:inputType="phone"
             android:text="Phone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintHorizontal_bias="0.159"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="521dp" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.738" />
 
         <EditText
             android:id="@+id/userAge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:inputType="number"
             android:text="Age"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintHorizontal_bias="0.148"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="445dp" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.619" />
 
 
         <Button
             android:id="@+id/signUpButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="oh yeah!"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="136dp"
-            tools:layout_editor_absoluteY="618dp" />
-
-        <ImageButton
-            android:id="@+id/genderMale"
-            android:layout_width="104dp"
-            android:layout_height="97dp"
-            android:layout_marginStart="56dp"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="175dp"
-            tools:srcCompat="@tools:sample/avatars[0]" />
-
-        <ImageButton
-            android:id="@+id/genderFemale"
-            android:layout_width="103dp"
-            android:layout_height="99dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="GO Ahead !"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.27"
-            app:layout_constraintStart_toEndOf="@+id/genderMale"
-            tools:layout_editor_absoluteY="173dp"
-            tools:srcCompat="@tools:sample/avatars[4]" />
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.89" />
+
+            android:id="@+id/genderMale"
+        <ImageView
+            android:layout_width="86dp"
+            android:layout_height="157dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:cropToPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.22"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.247"
+            app:srcCompat="@drawable/Male" />
+
+            android:id="@+id/genderFemale"
+        <ImageView
+            android:layout_width="192dp"
+            android:layout_height="331dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:cropToPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.881"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.153"
+            app:srcCompat="@drawable/Female" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -186,30 +223,54 @@
             android:id="@+id/userEmailSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="284dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="Enter E mail"
             android:inputType="textEmailAddress"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="289dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.192"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.111" />
 
         <EditText
             android:id="@+id/userPasswordSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="Enter Password"
             android:inputType="textPassword"
-            tools:layout_editor_absoluteX="15dp"
-            tools:layout_editor_absoluteY="385dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.192"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.605" />
 
         <Button
             android:id="@+id/goToRegButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="SignUp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="140dp"
-            tools:layout_editor_absoluteY="503dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.763" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -223,51 +284,96 @@
             android:id="@+id/userEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="326dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.565" />
 
         <EditText
             android:id="@+id/userPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="443dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.714" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="E-Mail id"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="306dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.266"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.517" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="Password"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="423dp" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="93dp"
-            tools:srcCompat="@tools:sample/avatars[0]" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.274"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.668" />
 
         <Button
             android:id="@+id/signInButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="GO"
-            tools:layout_editor_absoluteX="140dp"
-            tools:layout_editor_absoluteY="534dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.836" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="295dp"
+            android:layout_height="248dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.173"
+            app:srcCompat="@drawable/docpat" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -286,12 +392,12 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="89dp"
-            android:layout_marginTop="50dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6">
 
             <Button
                 android:id="@+id/signUpButton"
@@ -308,11 +414,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="125dp"
-            tools:layout_editor_absoluteY="87dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_width="204dp"
+            android:layout_height="228dp"
+            app:srcCompat="@drawable/doc"
+            tools:layout_editor_absoluteX="119dp"
+            tools:layout_editor_absoluteY="97dp" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
