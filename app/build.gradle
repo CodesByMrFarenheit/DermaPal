@@ -61,7 +61,7 @@ android {
         androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 
-        compile (group: 'org.deeplearning4j', name: 'deeplearning4j-core', version: '1.0.0-beta3') {
+        compile(group: 'org.deeplearning4j', name: 'deeplearning4j-core', version: '1.0.0-beta3') {
             exclude group: 'org.bytedeco.javacpp-presets', module: 'opencv-platform'
             exclude group: 'org.bytedeco.javacpp-presets', module: 'leptonica-platform'
             exclude group: 'org.bytedeco.javacpp-presets', module: 'hdf5-platform'
@@ -92,7 +92,6 @@ android {
         implementation 'com.google.code.gson:gson:2.8.2'
         annotationProcessor 'org.projectlombok:lombok:1.16.16'
 
-
         //This corrects for a junit version conflict.
         configurations.all {
             resolutionStrategy.force 'junit:junit:4.12'
@@ -107,4 +106,8 @@ android {
     }
 
     apply plugin: 'com.google.gms.google-services'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
 }
