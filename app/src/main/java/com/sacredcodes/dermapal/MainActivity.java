@@ -9,8 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -52,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     Button goToRegButton;
 
     //Reg Layout
-    ImageButton genderMale;
-    ImageButton GenderFemale;
+    ImageView genderMale;
+    ImageView genderFemale;
     Button SignUpButton2;
     EditText userName;
     EditText userPhone;
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Reg Layout
         genderMale =  findViewById(R.id.genderMale);
-        GenderFemale = findViewById(R.id.genderFemale);
+        genderFemale = findViewById(R.id.genderFemale);
         SignUpButton2 =  findViewById(R.id.signUpButton2);
         userName = findViewById(R.id.userName);
         userPhone = findViewById(R.id.userPhone);
@@ -107,16 +106,19 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             userGender = "male";
+            genderFemale.setImageResource(R.drawable.female);
+            genderMale.setImageResource(R.drawable.malethumsup);
 
         }
     });
 
-    GenderFemale.setOnClickListener(new View.OnClickListener() {
+    genderFemale.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             userGender = "female";
-
+            genderMale.setImageResource(R.drawable.male);
+            genderFemale.setImageResource(R.drawable.femalethumsup);
         }
     });
 
