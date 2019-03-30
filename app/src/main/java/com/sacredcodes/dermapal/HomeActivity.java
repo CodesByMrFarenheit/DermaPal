@@ -39,6 +39,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -205,3 +207,68 @@ public class HomeActivity extends AppCompatActivity
 
 
 }
+
+
+//    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+//    DatabaseReference ref = database.child("Users/"+currentUser);
+//        ref.addValueEventListener(new ValueEventListener() {
+//
+//public static final String TAG = "Tag";
+//
+//
+//@Override
+//public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//
+//        // for (DataSnapshot unit : dataSnapshot.getChildren()) {
+//        // TODO: handle the post here
+//        Person user = dataSnapshot.getValue(Person.class);
+//        // profileName.setText(user.getUserName().toString());
+//
+//        mList.add(user);
+//
+//
+//        //}
+//
+//
+//        while (flag == 0) {
+//        if (mList.get(i).getUserEmail().equals(intent.getStringExtra("userEmail"))) {
+//        profilePhone.setText(mList.get(i).getUserPhone());
+//        profileName.setText(mList.get(i).getUserName());
+//        profileEmail.setText(mList.get(i).getUserEmail());
+//
+//        liveUser = new Person(mList.get(i).getUserEmail(), mList.get(i).getUserName(), mList.get(i).getUserPhone());
+//
+//        flag = 1;
+//        }
+//
+//        i++;
+//
+//        }
+//
+//
+//        HomeLayout.setVisibility(View.VISIBLE);
+//        mapButton.setVisibility(View.VISIBLE);
+//        buttonBar.setVisibility(View.VISIBLE);
+//
+//
+//        }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//@Override
+//public void onCancelled(DatabaseError databaseError) {
+//        // Getting Post failed, log a message
+//        profileEmail.setText(databaseError.toException().toString());
+//        Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//        // ...
+//        }
+//
+//
+//        });
