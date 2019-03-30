@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,10 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Layouts
-    ConstraintLayout layoutMain;
-    ConstraintLayout layoutSignIn;
-    ConstraintLayout layoutSignUp;
-    ConstraintLayout layoutReg;
+    RelativeLayout layoutMain;
+    RelativeLayout layoutSignIn;
+    RelativeLayout layoutSignUp;
+    RelativeLayout layoutReg;
+    RelativeLayout layoutTermsOfUse;
 
     //main Layout
 
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         layoutSignIn = findViewById(R.id.layoutSignIn);
         layoutSignUp = findViewById(R.id.layoutSignUp);
         layoutReg = findViewById(R.id.layoutReg);
+        layoutTermsOfUse = findViewById(R.id.layoutTermsOfUse);
 
         //Sign In Layout
         signInButton2 = findViewById(R.id.signInButton2);
@@ -100,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         layoutSignIn.setVisibility(View.INVISIBLE);
         layoutSignUp.setVisibility(View.INVISIBLE);
         layoutReg.setVisibility(View.INVISIBLE);
+        layoutTermsOfUse.setVisibility(View.INVISIBLE);
 
     genderMale.setOnClickListener(new View.OnClickListener() {
         @Override
