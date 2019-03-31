@@ -1,12 +1,18 @@
 package com.sacredcodes.dermapal;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,15 +24,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,20 +38,40 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
 import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-        Button cambutton;
-        ImageView image;
+    Button cambutton;
+    ImageView image;
+    Button uploadbutton;
+    Bitmap bitmap = null;
+    public FirebaseUser mUser;
+    private FirebaseAuth mAuth;
+    String ImgUrl;
+
+
+
+    private StorageReference mStorage;
+    String currentUser;
 
 
     @Override
@@ -59,16 +79,58 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        currentUser = mUser.getUid();
+
         cambutton=findViewById(R.id.cambutton);
         image=findViewById(R.id.image);
+        uploadbutton = findViewById(R.id.uploadbutton);
 
+        mStorage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://dermapal-5af43.appspot.com");
 
+        uploadbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bitmap != null) {
+                    StorageReference mountainsRef = mStorage.child("DermaImages").child(currentUser);
+
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] data1 = baos.toByteArray();
+
+                    UploadTask uploadTask = mountainsRef.putBytes(data1);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                            ImgUrl = taskSnapshot.getDownloadUrl().toString().trim();
+
+                            sendData(ImgUrl);
+
+                            //new Intent
+                            //Intent i = new Intent(HomeActivity.this, Main2Activity.class);
+                            //i.putExtra("userEmail", userEmail);
+                            //startActivity(i);
+
+                        }
+                    });
+
+                }
+
+            }
+        });
         cambutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent,0);
-
+                cambutton.setText("Retry");
             }
         });
 
@@ -85,13 +147,90 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-   //end of oncreate
+        //end of oncreate
+    }
+
+
+    private String formatJson(String imgUrl){
+    JSONObject json = new JSONObject();
+
+    try{
+        json.put("imgUrl", imgUrl);
+
+        return  json.toString(1);
+    }catch(JSONException e)
+    {
+        e.printStackTrace();
+    }
+
+
+        return null;
+    }
+
+    private void sendData(String imgUrl){
+
+        final String json = formatJson(imgUrl);
+
+        new AsyncTask<Void, Void, String>(){
+
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                
+                
+                
+                return getServerResponse(json);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                Toast.makeText(HomeActivity.this,s + "StartingNext Intent" ,
+                        Toast.LENGTH_LONG).show();
+
+                Intent i = new Intent(HomeActivity.this, Main2Activity.class);
+                //i.putExtra("userEmail", userEmail);
+                startActivity(i);
+
+            }
+        }.execute();
+
+
+
+
+
+    }
+
+    private String getServerResponse(String json) {
+        HttpPost post = new HttpPost("http://103.250.36.82:5002/pred.py");
+
+        try {
+            StringEntity entity = new StringEntity(json);
+
+            post.setEntity(entity);
+            post.setHeader("Content-type", "application/json");
+
+            DefaultHttpClient client = new DefaultHttpClient();
+            BasicResponseHandler handler = new BasicResponseHandler();
+            String response = client.execute(post, handler);
+
+            return  response;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
+return  "Unable to contact server";
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Bitmap bitmap=(Bitmap)data.getExtras().get("data");
+        bitmap=(Bitmap)data.getExtras().get("data");
         image.setImageBitmap(bitmap);
     }
 
@@ -136,18 +275,26 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent,0);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_send) {
-
+            mAuth.getInstance().signOut();
+            startActivity(new Intent(HomeActivity.this, MainActivity.class));
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
 }
 
 
@@ -155,11 +302,11 @@ public class HomeActivity extends AppCompatActivity
 //    DatabaseReference ref = database.child("Users/"+currentUser);
 //        ref.addValueEventListener(new ValueEventListener() {
 //
-//public static final String TAG = "Tag";
+//  public static final String TAG = "Tag";
 //
 //
-//@Override
-//public void onDataChange(DataSnapshot dataSnapshot) {
+//  @Override
+//  public void onDataChange(DataSnapshot dataSnapshot) {
 //
 //
 //        // for (DataSnapshot unit : dataSnapshot.getChildren()) {

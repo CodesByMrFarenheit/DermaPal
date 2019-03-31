@@ -9,9 +9,7 @@
     tools:context=".HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
@@ -44,6 +42,16 @@
             android:background="@color/colorPrimary"
             android:clickable="true"
             android:text="OPEN CAMERA"
+            android:textColor="#fcfcfc" />
+
+        <Button
+            android:id="@+id/uploadbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:clickable="true"
+            android:text="UPLOAD"
             android:textColor="#fcfcfc" />
 
 
